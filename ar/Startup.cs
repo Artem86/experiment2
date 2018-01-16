@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using ar.middleware;
 
 namespace ar
 {
@@ -46,6 +47,7 @@ namespace ar
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                app.UseHttpsEnforcement();
             }
 
             app.UseStaticFiles(new StaticFileOptions { ServeUnknownFileTypes = true });
