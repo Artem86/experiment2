@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>@ViewData["Title"] - Augmented Reality</title>
 
     <environment names="Development">
@@ -16,15 +17,6 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-</head>
-<body>
-        <div class="container body-content" id="main_container">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - AmRest</p>
-        </footer>
-    </div>
 
     <environment names="Development">
         <script src="https://aframe.io/releases/0.7.0/aframe.js"></script>
@@ -34,9 +26,14 @@
     <environment names="Staging,Production">
         <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
         <script src="~/js/aframe-ar.min.js"></script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        @*<script src="~/js/site.min.js" asp-append-version="true"></script>*@
     </environment>
-
+</head>
+<body>
+    @*detectionMode: mono_and_matrix; matrixCodeType: 3x3;*@ 
+    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; areaLearningButton: false;'>
+        @RenderBody()
+    </a-scene>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
